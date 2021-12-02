@@ -1,0 +1,160 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  namespace: prod
+  labels:
+    name: frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: frontend
+  template:
+    metadata:
+      labels:
+        name: frontend
+    spec:
+      containers:
+      - name: fronend
+        image: murzinvit/frontend:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8000
+        env:
+        - name: BASE_URL
+          value: http://localhost:9000
+        volumeMounts:
+        - name: file-storage
+          mountPath: /mnt
+      volumes:
+      - name: file-storage
+        persistentVolumeClaim:
+          claimName: file-volume-claim
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend
+  namespace: prod
+  labels:
+    name: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: backend
+  template:
+    metadata:
+      labels:
+        name: backend
+    spec:
+      containers:
+      - name: backend
+        image: murzinvit/backend:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 9000
+        env:
+        - name: DATABASE_URL
+          value: postgres://postgres:postgres@db-service:5432/news
+        volumeMounts:
+        - name: file-storage
+          mountPath: /mnt
+      volumes:
+      - name: file-storage
+        persistentVolumeClaim:
+          claimName: file-volume-claim
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db
+  namespace: prod
+  labels:
+    name: db
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: db
+  template:
+    metadata:
+      labels:
+        name: db
+    spec:
+      containers:
+      - name: db
+        image: murzinvit/db:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5432
+        volumeMounts:
+        - name: db-storage
+          mountPath: /var/lib/
+      volumes:
+      - name: db-storage
+        persistentVolumeClaim:
+          claimName: db-volume-claim
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: backend-service
+  namespace: prod
+  labels:
+    name: backend-service
+spec:
+  ports:
+  - port: 9000
+  selector:
+    name: backend
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: db-service
+  namespace: prod
+  labels:
+    name: db-service
+spec:
+  ports:
+  - port: 5432
+  selector:
+    name: db
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: prod
+  labels:
+    name: frontend-service
+spec:
+  ports:
+  - port: 8000
+  selector:
+    name: frontend
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-hosts
+  namespace: prod
+
+spec:
+  rules:
+  - host: devops6.ru
+    http:
+      paths:
+       - path: /
+         pathType: Prefix
+         backend:
+           service: 
+              name: frontend-service
+              port:
+                number: 8000
