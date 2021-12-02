@@ -13,4 +13,24 @@
 * третью версию в namespace=app2.
 
 ### Задание 3 (*): повторить упаковку на jsonnet
-Для изучения другого инструмента стоит попробовать повторить опыт упаковки из задания 1, только теперь с помощью инструмента jsonnet.
+Для изучения другого инструмента стоит попробовать повторить опыт упаковки из задания 1, только теперь с помощью инструмента jsonnet. </br>
+
+Раочие заметки: </br>
+-----------------------------------------------
+chart — это набор файлов </br>
+Очистка всех доступных значений конфигурации пакета: `helm inspect values chart-name` </br>
+При установке объединяется конфигурация из --set, values.yaml, templates </br>
+Helm позволяет легко возвращаться к предыдущим редакциям релиза </br>
+Создать пример каталога пакетов: helm create chart-name </br>
+Файлы, необходимые для генерации манифестов Kubernetes-ресурсов: </br>
+`Chart.yaml` - метаданные(name,version, etc..) </br>
+`templates` - файлы манифеста Kubernetes(шаблоны) </br>
+`charts` - </br>
+`values.yaml` - переменные конфигурации из манифестов(значения по умолчанию) </br>
+`requirements.yaml` - зависимости </br>
+
+-----------------------------------------------
+Ссылки: </br>
+https://www.digitalocean.com/community/tutorials/an-introduction-to-helm-the-package-manager-for-kubernetes-ru </br>
+https://habr.com/ru/company/flant/blog/423239/ </br>
+https://habr.com/ru/company/flant/blog/420437/ </br>
