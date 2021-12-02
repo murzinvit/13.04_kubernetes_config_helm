@@ -1,6 +1,16 @@
 # Default Values for Helm Chart
 
-container:
-  image: mysql:latest
+ContainerFront:
+  image: murzinvit/frontend:latest
 
-replicaCount: 2
+ContainerBack:
+  image: murzinvit/backend:latest
+
+ContainerDB:
+  image: murzinvit/db:latest
+
+replicaCountFront: 2
+
+replicaCountBack: 2
+
+replicaCountDB: 2

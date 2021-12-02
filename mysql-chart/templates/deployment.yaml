@@ -2,22 +2,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: {{ .Release.Nane }}-frontend
   labels:
-    name: frontend
+    name: {{ .Release.Name }}-frontend
 spec:
-  replicas: 2
+  replicas: {{ .Values.replicaCountFront }}
   selector:
     matchLabels:
-      name: frontend
+      name: {{ .Release.Name }}-frontend
   template:
     metadata:
       labels:
-        name: frontend
+        name: {{ .Release.Name }}-frontend
     spec:
       containers:
-      - name: fronend
-        image: murzinvit/frontend:latest
+      - name: {{ .Release.Name }}-frontend
+        image: {{ .Values.ContainerFront.image }}
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
