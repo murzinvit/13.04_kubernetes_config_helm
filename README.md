@@ -6,7 +6,7 @@
 * каждый компонент приложения деплоится отдельным deployment’ом/statefulset’ом;
 * в переменных чарта измените образ приложения для изменения версии.
 
-Установил NFS сервер через helm и создал pv - ourspace: </br>
+Установил NFS сервер через helm-chart: </br>
 `helm repo add stable https://charts.helm.sh/stable && helm repo update` </br>
 `helm install nfs-server stable/nfs-server-provisioner` </br>
 Создать pvc для front, back и database: </br>
@@ -26,9 +26,16 @@
  EOF
  ```
  ![helm_make_pvc](https://github.com/murzinvit/screen_1/blob/f0e08f45cad230d631d78e33071929ef5bc3fac5/Kuber_helm_make_pvc.jpg) </br>
-Установить helm-chart: </br>
-`helm install devops6-app devops6-chart .` </br>
-![app_install](https://github.com/murzinvit/screen_1/blob/c58a03582cc9157acf9b6e094526e6a529a058d2/Kuber_helm_app_install.jpg) </br>
+Установить приложение, перейти в папку с helm-chart и выполнить команду: </br>
+`helm install devops6-app .` </br>
+[devops6-chart](https://github.com/murzinvit/13.04_kubernetes_config_helm/tree/main/devops6-chart) </br>
+![app_install](https://github.com/murzinvit/screen_1/blob/4eed8c1dd05717430e86ec6ac771ea54b85bc535/Kuber_helm_installdevops6_app1.jpg) </br>
+Контейнеры подняты в разных deployments: </br>
+![app_deployment](https://github.com/murzinvit/screen_1/blob/1f840e5ccc2112a742ddbc261468dc2651da4d88/Kuber_run_deployments_app.jpg) </br>
+Смена версии контейнера в файле values.yaml. Заменил latest на ver1: </br>
+![container_value](https://github.com/murzinvit/screen_1/blob/62c8610f89f339fb690caa02978e81d80cd4d1a5/Kuber_change_container_value.jpg) </br>
+Запустил приложение с новым именем: </br>
+![devops6_app_test](https://github.com/murzinvit/screen_1/blob/4e2d4eda43d4a97f31a89b8a7502d5090f23df99/Kuber_run_devops6_app_test.jpg) </br>
 
 ### Задание 2: запустить 2 версии в разных неймспейсах
 Подготовив чарт, необходимо его проверить. Попробуйте запустить несколько копий приложения:
@@ -36,10 +43,21 @@
 * вторую версию в том же неймспейсе;
 * третью версию в namespace=app2.
 
+Запуск чарта в namespace=app1: `helm install devops6-app . --namespace app1 --create-namespace` </br>
+Переключться на namespace app1: `kubens app1` </br>
+Создать pvc для prod, back, db в namespace app1, и запустить версию 2: `helm install devops6-app-test .`: </br>
+![app_in_1_ns](https://github.com/murzinvit/screen_1/blob/9bbbb899e18c2b2e77aba33e5c44f225c79a092b/Kuber_run_2_version_app_in_1_ns.jpg) </br>
+![helm_list](https://github.com/murzinvit/screen_1/blob/e3ee480cc6478df221031482956be8b1ab8196b2/Kuber_2_ver_in_app1_helm_list.jpg) </br>
+
+Запуск чарта в namespace=app2: `helm install devops6-app-2 . --namespace app2 --create-namespace` </br>
+Переключться на namespace app1: `kubens app1` </br>
+Создать pvc для prod, back, db в namespace app2 </br>
+![install_apps](https://github.com/murzinvit/screen_1/blob/db51df0d4d825297c96e90ef755b73139712aa59/Kuber_app2_install_apps.jpg) </br>
+
 ### Задание 3 (*): повторить упаковку на jsonnet
 Для изучения другого инструмента стоит попробовать повторить опыт упаковки из задания 1, только теперь с помощью инструмента jsonnet. </br>
 
-Раочие заметки: </br>
+Рабочие заметки: </br>
 -----------------------------------------------
 Установка NFS сервера через helm: </br>
     установить helm: `curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash` </br>
@@ -64,3 +82,5 @@ Helm позволяет легко возвращаться к предыдущ�
 https://www.digitalocean.com/community/tutorials/an-introduction-to-helm-the-package-manager-for-kubernetes-ru </br>
 https://habr.com/ru/company/flant/blog/423239/ </br>
 https://habr.com/ru/company/flant/blog/420437/ </br>
+Установка kubens: https://russianblogs.com/article/26711674839/ </br>
+
