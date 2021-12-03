@@ -30,6 +30,9 @@
 `helm install devops6-app .` </br>
 [devops6-chart](https://github.com/murzinvit/13.04_kubernetes_config_helm/tree/main/devops6-chart) </br>
 ![app_install](https://github.com/murzinvit/screen_1/blob/4eed8c1dd05717430e86ec6ac771ea54b85bc535/Kuber_helm_installdevops6_app1.jpg) </br>
+Сервисы подняты в deployments: </br>
+![app_deployment](https://github.com/murzinvit/screen_1/blob/e61fda2e4392c432d6c9e4d199d9a53b69739900/Kuber_helm_app_deployment.jpg) </br>
+Смена версии контейнера: </br>
 
 ### Задание 2: запустить 2 версии в разных неймспейсах
 Подготовив чарт, необходимо его проверить. Попробуйте запустить несколько копий приложения:
