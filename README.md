@@ -6,7 +6,7 @@
 * каждый компонент приложения деплоится отдельным deployment’ом/statefulset’ом;
 * в переменных чарта измените образ приложения для изменения версии.
 
-Установил NFS сервер через helm и создал pv - ourspace: </br>
+Установил NFS сервер через helm-chart: </br>
 `helm repo add stable https://charts.helm.sh/stable && helm repo update` </br>
 `helm install nfs-server stable/nfs-server-provisioner` </br>
 Создать pvc для front, back и database: </br>
