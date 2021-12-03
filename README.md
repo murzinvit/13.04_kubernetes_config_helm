@@ -34,6 +34,8 @@
 ![app_deployment](https://github.com/murzinvit/screen_1/blob/1f840e5ccc2112a742ddbc261468dc2651da4d88/Kuber_run_deployments_app.jpg) </br>
 Смена версии контейнера в файле values.yaml. Заменил latest на ver1: </br>
 ![container_value](https://github.com/murzinvit/screen_1/blob/62c8610f89f339fb690caa02978e81d80cd4d1a5/Kuber_change_container_value.jpg) </br>
+Запустил приложение с новым именем: </br>
+![devops6_app_test](https://github.com/murzinvit/screen_1/blob/4e2d4eda43d4a97f31a89b8a7502d5090f23df99/Kuber_run_devops6_app_test.jpg) </br>
 
 ### Задание 2: запустить 2 версии в разных неймспейсах
 Подготовив чарт, необходимо его проверить. Попробуйте запустить несколько копий приложения:
