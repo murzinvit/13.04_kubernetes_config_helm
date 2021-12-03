@@ -48,10 +48,11 @@
 Создать pvc для prod, back, db в namespace app1, и запустить версию 2: `helm install devops6-app-test .`: </br>
 ![app_in_1_ns](https://github.com/murzinvit/screen_1/blob/9bbbb899e18c2b2e77aba33e5c44f225c79a092b/Kuber_run_2_version_app_in_1_ns.jpg) </br>
 ![helm_list](https://github.com/murzinvit/screen_1/blob/e3ee480cc6478df221031482956be8b1ab8196b2/Kuber_2_ver_in_app1_helm_list.jpg) </br>
-Запуск чарта версии 2 в namespace=app1: `helm install devops6-app-1 .` </br>
 
 Запуск чарта в namespace=app2: `helm install devops6-app-2 . --namespace app2 --create-namespace` </br>
-
+Переключться на namespace app1: `kubens app1` </br>
+Создать pvc для prod, back, db в namespace app2 </br>
+![install_apps](https://github.com/murzinvit/screen_1/blob/db51df0d4d825297c96e90ef755b73139712aa59/Kuber_app2_install_apps.jpg) </br>
 
 ### Задание 3 (*): повторить упаковку на jsonnet
 Для изучения другого инструмента стоит попробовать повторить опыт упаковки из задания 1, только теперь с помощью инструмента jsonnet. </br>
