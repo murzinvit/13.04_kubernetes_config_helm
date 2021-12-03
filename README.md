@@ -26,11 +26,9 @@
  EOF
  ```
  ![helm_make_pvc](https://github.com/murzinvit/screen_1/blob/f0e08f45cad230d631d78e33071929ef5bc3fac5/Kuber_helm_make_pvc.jpg) </br>
-Установить helm-chart пакет в namespace - stage-ns-devops6: </br>
-`helm install app devops6-chart --namespace stage-ns-devops6 --create-namespace` </br>
+Установить helm-chart: </br>
+`helm install devops6-app devops6-chart .` </br>
 ![app_install](https://github.com/murzinvit/screen_1/blob/c58a03582cc9157acf9b6e094526e6a529a058d2/Kuber_helm_app_install.jpg) </br>
-Установить helm-chart пакет в namespace - test-ns-devops6: </br>
-`helm install app devops6-chart --namespace test-ns-devops6 --create-namespace` </br>
 
 ### Задание 2: запустить 2 версии в разных неймспейсах
 Подготовив чарт, необходимо его проверить. Попробуйте запустить несколько копий приложения:
@@ -59,6 +57,7 @@ Helm позволяет легко возвращаться к предыдущ�
 `charts` - </br>
 `values.yaml` - переменные конфигурации из манифестов(значения по умолчанию) </br>
 `requirements.yaml` - зависимости </br>
+Установка пакета: `helm install app devops6-chart --namespace stage-ns-devops6 --create-namespace` </br>
 
 -----------------------------------------------
 Ссылки: </br>
