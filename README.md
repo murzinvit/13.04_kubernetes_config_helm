@@ -32,7 +32,7 @@
 ![app_install](https://github.com/murzinvit/screen_1/blob/4eed8c1dd05717430e86ec6ac771ea54b85bc535/Kuber_helm_installdevops6_app1.jpg) </br>
 Сервисы подняты в deployments: </br>
 ![app_deployment](https://github.com/murzinvit/screen_1/blob/e61fda2e4392c432d6c9e4d199d9a53b69739900/Kuber_helm_app_deployment.jpg) </br>
-Смена версии контейнера в файле values.yaml: </br>
+Смена версии контейнера в файле values.yaml. Заменил latest на ver1: </br>
 ![container_value](https://github.com/murzinvit/screen_1/blob/62c8610f89f339fb690caa02978e81d80cd4d1a5/Kuber_change_container_value.jpg) </br>
 
 ### Задание 2: запустить 2 версии в разных неймспейсах
