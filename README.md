@@ -29,7 +29,7 @@
 Установить приложение, перейти в папку с helm-chart и выполнить команду: </br>
 `helm install devops6-app .` </br>
 [devops6-chart](https://github.com/murzinvit/13.04_kubernetes_config_helm/tree/main/devops6-chart) </br>
-![app_install](https://github.com/murzinvit/screen_1/blob/c58a03582cc9157acf9b6e094526e6a529a058d2/Kuber_helm_app_install.jpg) </br>
+![app_install](https://github.com/murzinvit/screen_1/blob/d980fe54e30c390067f1fe97efb5b4e8742f7260/Kuber_helm_installdevops6_app.jpg) </br>
 
 ### Задание 2: запустить 2 версии в разных неймспейсах
 Подготовив чарт, необходимо его проверить. Попробуйте запустить несколько копий приложения:
