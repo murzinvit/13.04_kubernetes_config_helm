@@ -9,6 +9,22 @@
 Установил NFS сервер через helm и создал pv - ourspace: </br>
 `helm repo add stable https://charts.helm.sh/stable && helm repo update` </br>
 `helm install nfs-server stable/nfs-server-provisioner` </br>
+Создать pvc: </br>
+ ```
+ kubectl apply -f - <<EOF
+    kind: PersistentVolumeClaim
+    apiVersion: v1
+    metadata:
+      name: front-claim
+    spec:
+      storageClassName: "nfs"
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 100Mi
+ EOF
+ ```
 Установить helm-chart пакет в namespace - stage-ns-devops6: </br>
 `helm install app devops6-chart --namespace stage-ns-devops6 --create-namespace` </br>
 ![app_install](https://github.com/murzinvit/screen_1/blob/c58a03582cc9157acf9b6e094526e6a529a058d2/Kuber_helm_app_install.jpg) </br>
