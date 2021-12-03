@@ -3,7 +3,6 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ .Release.Nane }}frontend
-  namespace: devops6-app
   labels:
     name: {{ .Release.Name }}frontend
 spec:
@@ -18,7 +17,7 @@ spec:
     spec:
       containers:
       - name: {{ .Release.Name }}frontend
-        image: {{ .Values.ContainerFront.image }}
+        image: {{ .Values.containerFront.image }}
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 80
@@ -30,28 +29,28 @@ spec:
           mountPath: /mnt
       volumes:
       - name: file-storage
-        emptyDir: {}
+        persistentVolumeClaim:
+          claimName: {{ .Values.frontVolume }}
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend
-  namespace: devops6-app
+  name: {{ .Release.Name }}backend
   labels:
-    name: backend
+    name: {{ .Release.Name }}backend
 spec:
-  replicas: 2
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      name: backend
+      name: {{ .Release.Name }}backend
   template:
     metadata:
       labels:
-        name: backend
+        name: {{ .Release.Name }}backend
     spec:
       containers:
-      - name: backend
-        image: murzinvit/backend:latest
+      - name: {{ .Release.Name }}backend
+        image: {{ .Values.containerBack.image }}
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 9000
@@ -63,28 +62,28 @@ spec:
           mountPath: /mnt
       volumes:
       - name: file-storage
-        emptyDir: {}
+        persistentVolumeClaim:
+          claimName: {{ .Values.backVolume }}
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: db
-  namespace: devops6-app
+  name: {{ .Release.Name }}db
   labels:
-    name: db
+    name: {{ .Release.Name }}db
 spec:
-  replicas: 2
+  replicas: {{ .Values.replicaCount }}
   selector:
     matchLabels:
-      name: db
+      name: {{ .Release.Name }}db
   template:
     metadata:
       labels:
-        name: db
+        name: {{ .Release.Name }}db
     spec:
       containers:
-      - name: db
-        image: murzinvit/db:latest
+      - name: {{ .Release.Name }}db
+        image: {{ .Values.containerDB.image }}
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5432
@@ -93,4 +92,6 @@ spec:
           mountPath: /var/lib/
       volumes:
       - name: db-storage
-        emptyDir: {}
+        persistentVolumeClaim:
+          claimName: {{ .Values.dbVolume }}
+

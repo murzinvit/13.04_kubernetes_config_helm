@@ -3,7 +3,6 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-hosts
-  namespace: devops6-app
 spec:
   rules:
   - host: devops6.ru
@@ -13,6 +12,6 @@ spec:
          pathType: Prefix
          backend:
            service: 
-              name: frontend-service
+              name: {{ .Release.Name }}frontend-service
               port:
                 number: 80

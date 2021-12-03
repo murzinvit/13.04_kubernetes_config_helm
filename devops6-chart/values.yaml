@@ -1,12 +1,12 @@
 # Default Values for Helm Chart
 
-ContainerFront:
+containerFront:
   image: murzinvit/frontend:latest
 
-ContainerBack:
+containerBack:
   image: murzinvit/backend:latest
 
-ContainerDB:
+containerDB:
   image: murzinvit/db:latest
 
 replicaCountFront: 1
@@ -14,3 +14,9 @@ replicaCountFront: 1
 replicaCountBack: 1
 
 replicaCountDB: 1
+
+frontVolume: front-volume
+
+backVolume: back-volume
+
+dbVolume: db-volume

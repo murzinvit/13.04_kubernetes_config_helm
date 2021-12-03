@@ -2,38 +2,35 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: backend-service
-  namespace: devops6-app
+  name: {{ .Release.Name }}backend-service
   labels:
-    name: backend-service
+    name: {{ .Release.Name }}backend-service
 spec:
   ports:
   - port: 9000
   selector:
-    name: backend
+    name: {{ .Release.Name }}backend
   type: ClusterIP
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: db-service
-  namespace: devops6-app
+  name: {{ .Release.Name }}db-service
   labels:
-    name: db-service
+    name: {{ .Release.Name }}db-service
 spec:
   ports:
   - port: 5432
   selector:
-    name: db
+    name: {{ .Release.Name }}db
   type: ClusterIP
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: frontend-service
-  namespace: devops6-app
+  name: {{ .Release.Name }}frontend-service
   labels:
-    name: frontend-service
+    name: {{ .Release.Name }}frontend-service
 spec:
   ports:
   - port: 80
