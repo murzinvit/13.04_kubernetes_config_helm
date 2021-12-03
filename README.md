@@ -26,8 +26,9 @@
  EOF
  ```
  ![helm_make_pvc](https://github.com/murzinvit/screen_1/blob/f0e08f45cad230d631d78e33071929ef5bc3fac5/Kuber_helm_make_pvc.jpg) </br>
-Установить приложение , перейти в папку с приложением helm-chart и выполнить команду: </br>
+Установить приложение, перейти в папку с helm-chart и выполнить команду: </br>
 `helm install devops6-app devops6-chart .` </br>
+[devops6-chart](https://github.com/murzinvit/13.04_kubernetes_config_helm/tree/main/devops6-chart) </br>
 ![app_install](https://github.com/murzinvit/screen_1/blob/c58a03582cc9157acf9b6e094526e6a529a058d2/Kuber_helm_app_install.jpg) </br>
 
 ### Задание 2: запустить 2 версии в разных неймспейсах
