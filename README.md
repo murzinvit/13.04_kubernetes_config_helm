@@ -5,6 +5,9 @@
 Необходимо упаковать приложение в чарт для деплоя в разные окружения. Требования:
 * каждый компонент приложения деплоится отдельным deployment’ом/statefulset’ом;
 * в переменных чарта измените образ приложения для изменения версии.
+Установил NFS сервер через helm и создал pv - ourspace: </br>
+`helm repo add stable https://charts.helm.sh/stable && helm repo update` </br>
+`helm install nfs-server stable/nfs-server-provisioner` </br>
 
 ### Задание 2: запустить 2 версии в разных неймспейсах
 Подготовив чарт, необходимо его проверить. Попробуйте запустить несколько копий приложения:
@@ -17,6 +20,11 @@
 
 Раочие заметки: </br>
 -----------------------------------------------
+Установка NFS сервера через helm: </br>
+    установить helm: `curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash` </br>
+    добавить репозиторий чартов: `helm repo add stable https://charts.helm.sh/stable && helm repo update` </br>
+    установить nfs-server через helm: `helm install nfs-server stable/nfs-server-provisioner` </br>
+
 chart — это набор файлов </br>
 Очистка всех доступных значений конфигурации пакета: `helm inspect values chart-name` </br>
 При установке объединяется конфигурация из --set, values.yaml, templates </br>
