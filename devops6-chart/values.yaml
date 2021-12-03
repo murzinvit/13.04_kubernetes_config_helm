@@ -1,10 +1,9 @@
 # Default Values for Helm Chart
-
 containerFront:
-  image: murzinvit/frontend:latest
+  image: murzinvit/frontend:ver1
 
 containerBack:
-  image: murzinvit/backend:latest
+  image: murzinvit/backend:ver1
 
 containerDB:
   image: murzinvit/db:latest

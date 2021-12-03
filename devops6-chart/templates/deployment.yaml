@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Nane }}frontend
+  name: {{ .Release.Name }}frontend
   labels:
     name: {{ .Release.Name }}frontend
 spec:
@@ -56,7 +56,7 @@ spec:
         - containerPort: 9000
         env:
         - name: DATABASE_URL
-          value: postgres://postgres:postgres@db-service:5432/news
+          value: postgres://postgres:postgres@{{ .Release.Name }}db-service:5432/news
         volumeMounts:
         - name: file-storage
           mountPath: /mnt

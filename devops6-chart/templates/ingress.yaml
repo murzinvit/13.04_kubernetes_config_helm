@@ -2,10 +2,10 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: ingress-hosts
+  name: {{ .Release.Name }}ingress-hosts
 spec:
   rules:
-  - host: devops6.ru
+  - host: {{ .Release.Name }}.devops6.ru
     http:
       paths:
        - path: /
