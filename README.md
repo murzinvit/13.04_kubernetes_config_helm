@@ -15,7 +15,7 @@
     kind: PersistentVolumeClaim
     apiVersion: v1
     metadata:
-      name: front-claim
+      name: front-volume
     spec:
       storageClassName: "nfs"
       accessModes:
