@@ -9,8 +9,8 @@ ContainerBack:
 ContainerDB:
   image: murzinvit/db:latest
 
-replicaCountFront: 2
+replicaCountFront: 1
 
-replicaCountBack: 2
+replicaCountBack: 1
 
-replicaCountDB: 2
+replicaCountDB: 1

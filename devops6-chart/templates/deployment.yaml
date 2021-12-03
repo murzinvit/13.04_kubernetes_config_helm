@@ -2,21 +2,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Release.Nane }}-frontend
+  name: {{ .Release.Nane }}frontend
+  namespace: devops6-app
   labels:
-    name: {{ .Release.Name }}-frontend
+    name: {{ .Release.Name }}frontend
 spec:
   replicas: {{ .Values.replicaCountFront }}
   selector:
     matchLabels:
-      name: {{ .Release.Name }}-frontend
+      name: {{ .Release.Name }}frontend
   template:
     metadata:
       labels:
-        name: {{ .Release.Name }}-frontend
+        name: {{ .Release.Name }}frontend
     spec:
       containers:
-      - name: {{ .Release.Name }}-frontend
+      - name: {{ .Release.Name }}frontend
         image: {{ .Values.ContainerFront.image }}
         imagePullPolicy: IfNotPresent
         ports:
@@ -35,6 +36,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: backend
+  namespace: devops6-app
   labels:
     name: backend
 spec:
@@ -67,6 +69,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: db
+  namespace: devops6-app
   labels:
     name: db
 spec:
