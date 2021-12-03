@@ -43,6 +43,15 @@
 * вторую версию в том же неймспейсе;
 * третью версию в namespace=app2.
 
+Запуск чарта в namespace=app1: `helm install devops6-app . --namespace app1 --create-namespace` </br>
+Переключться на namespace app1: `kubens app1` </br>
+Создать pvc для prod, back, db в namespace app1: </br>
+![app_in_1_ns](https://github.com/murzinvit/screen_1/blob/9bbbb899e18c2b2e77aba33e5c44f225c79a092b/Kuber_run_2_version_app_in_1_ns.jpg) </br>
+Запуск чарта версии 2 в namespace=app1: `helm install devops6-app-1 .` </br>
+
+Запуск чарта в namespace=app2: `helm install devops6-app-2 . --namespace app2 --create-namespace` </br>
+
+
 ### Задание 3 (*): повторить упаковку на jsonnet
 Для изучения другого инструмента стоит попробовать повторить опыт упаковки из задания 1, только теперь с помощью инструмента jsonnet. </br>
 
@@ -71,3 +80,5 @@ Helm позволяет легко возвращаться к предыдущ�
 https://www.digitalocean.com/community/tutorials/an-introduction-to-helm-the-package-manager-for-kubernetes-ru </br>
 https://habr.com/ru/company/flant/blog/423239/ </br>
 https://habr.com/ru/company/flant/blog/420437/ </br>
+Установка kubens: https://russianblogs.com/article/26711674839/ </br>
+
