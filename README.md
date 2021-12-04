@@ -56,6 +56,9 @@
 Чтобы сменить REVISION нужно сделать upgrade текущего запущенного helm чарта,изменив любые параметры указанные в переменных values.yaml: </br>
 Пример: `helm upgrade devops6-app-test1 . --set containerFront.image=murzinvit/frontend:latest --set replicaCountFront=2`</br>
 ![Kuber_revision_2](https://github.com/murzinvit/screen_1/blob/d87e5c6d247cfae8d49bf0754f139c9bd7599c01/Kuber_revision_2.jpg) </br>
+Можно заускать helm-chart приложения из разных файлов с настройками values.yaml: </br>
+`helm install devops6-app-stage1 . -f stage_values.yaml` </br>
+![chart_in_stage](https://github.com/murzinvit/screen_1/blob/e7c3309574dd9206a78cc734258fb3de7c3cba53/Kuber_deploy_helm_chart_in_stage.jpg) </br>
 
 ### Задание 3 (*): повторить упаковку на jsonnet
 Для изучения другого инструмента стоит попробовать повторить опыт упаковки из задания 1, только теперь с помощью инструмента jsonnet. </br>
