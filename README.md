@@ -53,6 +53,9 @@
 Переключться на namespace app1: `kubens app1` </br>
 Создать pvc для prod, back, db в namespace app2 </br>
 ![install_apps](https://github.com/murzinvit/screen_1/blob/db51df0d4d825297c96e90ef755b73139712aa59/Kuber_app2_install_apps.jpg) </br>
+Чтобы сменить REVISION нужно сделать upgrade текущего запущенного helm чарта,изменив любые параметры указанные в переменных values.yaml: </br>
+Пример: `helm upgrade devops6-app-test1 . --set containerFront.image=murzinvit/frontend:latest --set replicaCountFront=2`</br>
+![Kuber_revision_2](https://github.com/murzinvit/screen_1/blob/d87e5c6d247cfae8d49bf0754f139c9bd7599c01/Kuber_revision_2.jpg) </br>
 
 ### Задание 3 (*): повторить упаковку на jsonnet
 Для изучения другого инструмента стоит попробовать повторить опыт упаковки из задания 1, только теперь с помощью инструмента jsonnet. </br>
